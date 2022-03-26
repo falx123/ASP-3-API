@@ -11,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
-
+using AutoMapper;
 namespace CommandAPI
 {
     public class Startup
@@ -37,6 +37,9 @@ namespace CommandAPI
             //     (Configuration.GetConnectionString("PostgreSqlConnection")));
 
             services.AddControllers();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             // services.AddScoped<Data.ICommandAPIRepo, MockCommandAPIRepo>();
             services.AddScoped<Data.ICommandAPIRepo, SqlCommandAPIRepo>();
 
